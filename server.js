@@ -1,18 +1,26 @@
 import express from "express";
-import config from "./config";
-// TODO: import router from routes/
+import router from "./routes";
+import morgan from "morgan";
+//import config from "./config";
 
 const app = express();
 
+//Use app.use() to handle all requests matching "/api" with router
+app.use(morgan("dev"));
 app.use(express.json());
 
-// TODO: use the imported router to handle all requests
+app.use("/api", router);
 
-app.use((err, req, res, next) => {
-  console.error(err);
-  res.json({ name: err.name, msg: err.message });
-});
+app.use((err, req, resp, next) => {
+  console.log(error);
+  res
+}
+)
 
-app.listen(config.port, () => {
-  console.log(`Server listening on port ${config.port}...`);
-});
+/**
+ * Bind the app to a specified port
+ * You can access your app at http://localhost:<port>
+ */
+app.listen(5001, () =>
+  console.log(`Server listening on port 5001...`)
+);
